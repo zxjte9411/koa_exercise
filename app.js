@@ -9,3 +9,18 @@ const path = require('path');
 
 const app = new Koa();
 const router = Router();
+
+//靜態資源目錄對於相對入口文件 app.js 的路徑
+const STATIC_PATH = __dirname + '/static'
+const staticPath = './static'
+
+app.use(static(
+    path.join(__dirname, staticPath)
+))
+
+app.use(views(STATIC_PATH + '/pages', {
+    extension: 'html'
+}));
+app.use(bodyParser());
+app.use(logger())
+app.use(router.routes());
