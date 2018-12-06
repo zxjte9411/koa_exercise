@@ -40,3 +40,8 @@ router.get('/test', async (ctx, next) => {
     `;
 });
 
+router.post('/test', async (ctx, next) => {
+    await ctx.render('test')
+})
+
+app.listen(3000);
