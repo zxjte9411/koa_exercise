@@ -24,3 +24,19 @@ app.use(views(STATIC_PATH + '/pages', {
 app.use(bodyParser());
 app.use(logger())
 app.use(router.routes());
+
+// Router -> /
+router.get('/', async (ctx, next) => {
+    await ctx.render('index')
+});
+
+// Router -> /test
+router.get('/test', async (ctx, next) => {
+    ctx.body = `
+    <form method="POST" action="/test">
+    <input name="" type="hidden" value="">
+    <button type="submit">點一下阿</button>
+    </form>
+    `;
+});
+
